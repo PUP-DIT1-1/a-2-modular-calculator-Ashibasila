@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continueCalculation = true;
+
+        while (continueCalculation) {
+            System.out.println("=MENU DRIVEN CALCULATOR=");
+            System.out.println("=ADD(+)");
+            System.out.println("=SUBTRACT(-)=");
+            System.out.println("=MULTIPLY(x)=");
+            System.out.println("=DIVIDE(/)=");
+            System.out.println("=EXIT=");
+            System.out.print("=ENTER YOUR CHOICE: =");
+            
+            int choice = scanner.nextInt();
+
+            if (choice == 1) {
+                double num1 = getNumber(scanner, "Enter first number: ");
+                double num2 = getNumber(scanner, "Enter second number: ");
+                double result = add(num1, num2);
+                System.out.println("Result: " + result);
+            } else if (choice == 2) {
+                double num1 = getNumber(scanner, "Enter first number: ");
+                double num2 = getNumber(scanner, "Enter second number: ");
+                double result = subtract(num1, num2);
+                System.out.println("Result: " + result);
+            } else if (choice == 3) {
+                double num1 = getNumber(scanner, "Enter first number: ");
+                double num2 = getNumber(scanner, "Enter second number: ");
+                double result = multiply(num1, num2);
+                System.out.println("Result: " + result);
+            } else if (choice == 4) {
+                double num1 = getNumber(scanner, "Enter first number: ");
+                double num2 = getNumber(scanner, "Enter second number: ");
+                try {
+                    double result = divide(num1, num2);
+                    System.out.println("Result: " + result);
+                } catch (ArithmeticException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (choice == 5) {
+                System.out.println("Exiting the calculator.");
+                continueCalculation = false;
+            } else {
+                System.out.println("INVALID CHOICE. PLEASE SELECT A VALID OPTION.");
+            }
+        }
+    }
+}
