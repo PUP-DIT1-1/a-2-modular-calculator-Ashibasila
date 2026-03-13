@@ -1,0 +1,56 @@
+import java.util.*
+
+public class StudentRecordSystem {
+    public static void main(String[] args) {
+        String[] studentNames = {
+            "ASHII", "MJ", "JC", "MARGA", "AYA",
+            "JAY R", "JASMINE", "GAB", "JUSTINE", "JANI"
+        };
+        int[] grades = {89, 92, 80, 90, 90, 80, 85, 892, 82, 88};
+        double average = computeAverage(grades);
+        System.out.println("Average Grade: " + average);
+        bubbleSort(grades);
+        System.out.println("Grades after sorting: " + Arrays.toString(grades));
+        String searchName = "ASHII";
+        int index = linearSearch(studentNames, searchName);
+        if (index != -1) {
+            System.out.println("Found " + searchName + " at index: " + index);
+            System.out.println(searchName + "'s grade: " + grades[index]);
+        } else {
+            System.out.println(searchName + " not found.");
+        }
+    }
+    public static double computeAverage(int[] grades) {
+        int sum = 0;
+        for (int grade : grades) {
+            sum += grade;
+        }
+        return (double) sum / grades.length;
+    }
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped)
+                break;
+        }
+    }
+    public static int linearSearch(String[] array, String key) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equalsIgnoreCase(key)) {
+                return i;
+            }
+        }
+        return -1; // Not found
+    }
+}
